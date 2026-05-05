@@ -8,18 +8,6 @@ function Nav() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const scrollToWaitlist = () => {
-    // Navigate to home first, then scroll past the stat barrage to the hero form
-    window.location.hash = '#/';
-    // Give the page time to render, then scroll to the form
-    setTimeout(() => {
-      const el = document.querySelector('#bm-waitlist-anchor');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 500);
-  };
-
   return (
     <nav className="bm-nav" style={{
       position: 'sticky', top: 0, zIndex: 30,
@@ -44,7 +32,7 @@ function Nav() {
       </div>
       <div className="bm-nav-right" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
         <div className="bm-nav-shop">
-          <Button variant="primary" onClick={scrollToWaitlist}>Get notified →</Button>
+          <Button variant="primary" onClick={() => { window.location.hash = '#/science'; }}>The science →</Button>
         </div>
 
         <button
@@ -87,7 +75,7 @@ function Nav() {
           <Link to="/science" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Science</Link>
           <Link to="/about" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Story</Link>
           <div style={{ marginTop: 20 }}>
-            <Button variant="primary" onClick={() => { closeMenu(); scrollToWaitlist(); }} style={{ width: '100%' }}>Get notified →</Button>
+            <Button variant="primary" onClick={() => { closeMenu(); window.location.hash = '#/science'; }} style={{ width: '100%' }}>The science →</Button>
           </div>
         </div>
       )}
