@@ -1,8 +1,7 @@
 function ProductPage({ productId }) {
-  const cart = useCart();
   const p = SITE_PRODUCTS.find(x => x.id === productId);
-  const [qty, setQty] = React.useState(1);
-  const [variant, setVariant] = React.useState('subscribe');
+  const [email, setEmail] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
 
   if (!p) {
     return (
@@ -14,7 +13,18 @@ function ProductPage({ productId }) {
   }
 
   const isEnergy = p.line === 'Energy';
-  const onAdd = () => { cart.add(p.id, variant, qty); };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (!email.includes('@')) return;
+    try {
+      const list = JSON.parse(localStorage.getItem('bm_waitlist') || '[]');
+      list.push({ email, at: Date.now(), source: `pdp:${p.id}` });
+      localStorage.setItem('bm_waitlist', JSON.stringify(list));
+    } catch {}
+    setSubmitted(true);
+  };
+
   const related = SITE_PRODUCTS.filter(x => x.line === p.line && x.id !== p.id);
 
   const cardStyles = {
@@ -30,14 +40,9 @@ function ProductPage({ productId }) {
     <>
       {/* Breadcrumb */}
       <div style={{
-        padding: '20px 48px',
-        borderBottom: '1.5px solid var(--bm-ink)',
-        background: 'var(--bm-paper)',
-        fontFamily: 'var(--font-text)',
-        fontWeight: 400,
-        fontSize: 14,
-        letterSpacing: '0.04em',
-        color: 'rgba(10,10,10,0.45)',
+        padding: '20px 48px', borderBottom: '1.5px solid var(--bm-ink)',
+        background: 'var(--bm-paper)', fontFamily: 'var(--font-text)',
+        fontWeight: 400, fontSize: 14, letterSpacing: '0.04em', color: 'rgba(10,10,10,0.45)',
       }} className="bm-breadcrumb">
         <Link to="/" style={{ color: 'rgba(10,10,10,0.45)', textDecoration: 'none' }}>Home</Link>
         <span style={{ margin: '0 8px', color: 'rgba(10,10,10,0.25)' }}>/</span>
@@ -67,15 +72,13 @@ function ProductPage({ productId }) {
         {/* Info side */}
         <div style={{ padding: '56px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} className="bm-pdp-info">
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink-deep)', marginBottom: 14 }}>
-            {p.line} · 12-Pack · 12 fl oz cans
+            {p.line} · 12 fl oz cans · Pre-launch
           </div>
-
           <h1 style={{
             fontFamily: 'var(--font-display)', fontWeight: 900,
             fontSize: 'clamp(36px, 4vw, 64px)', lineHeight: 0.92,
             letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 10,
           }}>{p.flavor}</h1>
-
           <div style={{ fontSize: 17, color: 'rgba(10,10,10,0.6)', fontStyle: 'italic', marginBottom: 20 }}>{p.tagline}</div>
 
           {!isEnergy && (
@@ -99,39 +102,48 @@ function ProductPage({ productId }) {
             ))}
           </div>
 
-          {/* Variant picker */}
-          <div style={{ border: '2px solid var(--bm-ink)', borderRadius: 8, padding: 20, background: '#fff', marginBottom: 20 }}>
-            <label style={{ display: 'flex', gap: 12, alignItems: 'flex-start', cursor: 'pointer', paddingBottom: 10, borderBottom: '1px solid rgba(10,10,10,0.08)' }}>
-              <input type="radio" name="v" checked={variant === 'subscribe'} onChange={() => setVariant('subscribe')} style={{ accentColor: 'var(--bm-pink)', marginTop: 4 }} />
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between' }}>
-                <div>
-                  <div style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 15 }}>Subscribe & save 15%</div>
-                  <div style={{ fontFamily: 'var(--font-text)', fontSize: 13, color: 'rgba(10,10,10,0.5)', marginTop: 3 }}>Ships every 4 weeks. Cancel anytime.</div>
-                </div>
-                <div style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 16, letterSpacing: '0.04em', color: 'var(--bm-pink)' }}>${p.priceSub.toFixed(2)}</div>
-              </div>
-            </label>
-            <label style={{ display: 'flex', gap: 12, alignItems: 'flex-start', cursor: 'pointer', paddingTop: 10 }}>
-              <input type="radio" name="v" checked={variant === 'one'} onChange={() => setVariant('one')} style={{ accentColor: 'var(--bm-pink)', marginTop: 4 }} />
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 15 }}>One-time purchase</div>
-                <div style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 16, letterSpacing: '0.04em', color: 'var(--bm-ink)' }}>${p.price.toFixed(2)}</div>
-              </div>
-            </label>
-          </div>
-
-          {/* Qty + CTA */}
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', border: '2px solid var(--bm-ink)', borderRadius: 4, height: 48, overflow: 'hidden' }}>
-              <button onClick={() => setQty(Math.max(1, qty - 1))} style={{ width: 44, height: 48, background: 'transparent', border: 'none', fontSize: 22, fontFamily: 'var(--font-text)', fontWeight: 700, color: 'var(--bm-ink)', cursor: 'pointer' }}>−</button>
-              <span style={{ width: 36, textAlign: 'center', fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 17, letterSpacing: '0.04em' }}>{qty}</span>
-              <button onClick={() => setQty(qty + 1)} style={{ width: 44, height: 48, background: 'transparent', border: 'none', fontSize: 22, fontFamily: 'var(--font-text)', fontWeight: 700, color: 'var(--bm-ink)', cursor: 'pointer' }}>+</button>
+          {/* Waitlist CTA — replaces price/cart */}
+          <div style={{ border: '2px solid var(--bm-ink)', borderRadius: 8, padding: 24, background: '#fff', boxShadow: '6px 6px 0 0 var(--bm-ink)', marginBottom: 16 }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink)', marginBottom: 8 }}>
+              Pre-launch · Coming soon
             </div>
-            <Button variant={isEnergy ? 'energy' : 'primary'} onClick={onAdd} style={{ flex: 1 }}>Add to cart →</Button>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 24, lineHeight: 1, letterSpacing: '-0.01em', textTransform: 'uppercase', marginBottom: 8 }}>
+              Be first in line.
+            </div>
+            <div style={{ fontSize: 14, color: 'rgba(10,10,10,0.6)', marginBottom: 16, lineHeight: 1.5 }}>
+              Get notified the moment {p.flavor} drops. Waitlist members get a launch-day discount.
+            </div>
+            {submitted ? (
+              <div style={{ background: 'var(--bm-ink)', color: 'var(--bm-paper)', padding: '14px 18px', borderRadius: 4, fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 14, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                ✓ You're on the list for {p.flavor}.
+              </div>
+            ) : (
+              <form onSubmit={onSubmit} style={{ display: 'flex', gap: 0 }}>
+                <input
+                  type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  style={{
+                    flex: 1, height: 52, padding: '0 18px',
+                    background: '#fff', color: 'var(--bm-ink)',
+                    border: '2px solid var(--bm-ink)', borderRight: 'none',
+                    borderRadius: '4px 0 0 4px',
+                    fontFamily: 'var(--font-mono)', fontSize: 14, outline: 'none',
+                  }}
+                />
+                <button type="submit" style={{
+                  height: 52, padding: '0 24px',
+                  background: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink)',
+                  color: '#fff', border: '2px solid var(--bm-ink)',
+                  borderRadius: '0 4px 4px 0',
+                  fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 12,
+                  letterSpacing: '0.16em', textTransform: 'uppercase', cursor: 'pointer',
+                }}>Notify me →</button>
+              </form>
+            )}
           </div>
 
           {!isEnergy && (
-            <div style={{ marginTop: 14, fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(10,10,10,0.4)', letterSpacing: '0.04em', lineHeight: 1.6 }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'rgba(10,10,10,0.4)', letterSpacing: '0.04em', lineHeight: 1.6 }}>
               ³ Kerr et al., Nutrients 2023;15(4):986. RCT, healthy males, 2.4g/day.<br />
               These statements have not been evaluated by the FDA.
             </div>
@@ -144,7 +156,7 @@ function ProductPage({ productId }) {
         <div className="bm-grid-founder">
           <div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--bm-pink-deep)', marginBottom: 14 }}>What's inside</div>
-            <h2 style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '0.02em', textTransform: 'uppercase', marginTop: 14, color: 'var(--bm-ink)' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', marginTop: 14, color: 'var(--bm-ink)' }}>
               The receipts<br />are on<br />the can.
             </h2>
           </div>
@@ -163,7 +175,7 @@ function ProductPage({ productId }) {
       {related.length > 0 && (
         <section style={{ background: 'var(--bm-paper)', padding: '80px 48px', borderTop: '1.5px solid var(--bm-ink)' }} className="bm-section-pad">
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--bm-pink-deep)', marginBottom: 12 }}>More from {p.line}</div>
-          <h3 style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '0.02em', textTransform: 'uppercase', marginBottom: 32, color: 'var(--bm-ink)' }}>Stack the deck.</h3>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 32, color: 'var(--bm-ink)' }}>Stack the deck.</h3>
           <div style={{ display: 'grid', gridTemplateColumns: `repeat(${related.length}, 1fr)`, gap: 20 }}>
             {related.map(r => {
               const cs = cardStyles[r.id] || { shadow: 'var(--bm-ink)' };
@@ -180,7 +192,7 @@ function ProductPage({ productId }) {
                     <img src={r.img} alt={r.flavor} style={{ height: 220, width: 'auto', objectFit: 'contain' }} />
                   </div>
                   <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, lineHeight: 1, textTransform: 'uppercase', color: r.accent, letterSpacing: '-0.01em' }}>{r.flavor}</div>
-                  <div style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 15, letterSpacing: '0.04em', color: r.accent, marginTop: 6 }}>${r.price.toFixed(2)}</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: r.accent, marginTop: 6 }}>Coming Soon</div>
                 </Link>
               );
             })}
