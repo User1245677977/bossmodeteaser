@@ -6,8 +6,19 @@ function Nav() {
     color: 'var(--bm-ink)', textDecoration: 'none', cursor: 'pointer',
   };
 
-  // Close menu on nav
   const closeMenu = () => setMenuOpen(false);
+
+  const scrollToWaitlist = () => {
+    // Navigate to home first, then scroll past the stat barrage to the hero form
+    window.location.hash = '#/';
+    // Give the page time to render, then scroll to the form
+    setTimeout(() => {
+      const el = document.querySelector('#bm-waitlist-anchor');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 500);
+  };
 
   return (
     <nav className="bm-nav" style={{
@@ -33,14 +44,9 @@ function Nav() {
       </div>
       <div className="bm-nav-right" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
         <div className="bm-nav-shop">
-          <Button variant="primary" onClick={() => {
-            const el = document.querySelector('#bm-waitlist-anchor');
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            else window.location.hash = '#/';
-          }}>Get notified →</Button>
+          <Button variant="primary" onClick={scrollToWaitlist}>Get notified →</Button>
         </div>
 
-        {/* Hamburger — visible only on mobile via CSS */}
         <button
           className="bm-nav-burger"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -61,7 +67,6 @@ function Nav() {
         </button>
       </div>
 
-      {/* Mobile dropdown panel */}
       {menuOpen && (
         <div
           className="bm-nav-mobile-panel"
@@ -82,17 +87,7 @@ function Nav() {
           <Link to="/science" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Science</Link>
           <Link to="/about" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Story</Link>
           <div style={{ marginTop: 20 }}>
-            <Button variant="primary" onClick={() => {
-              closeMenu();
-              setTimeout(() => {
-                const el = document.querySelector('#bm-waitlist-anchor');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                }
-              }, 50);
-            }} style={{ width: '100%' }}>Get notified →</Button>
+            <Button variant="primary" onClick={() => { closeMenu(); scrollToWaitlist(); }} style={{ width: '100%' }}>Get notified →</Button>
           </div>
         </div>
       )}
