@@ -66,7 +66,7 @@ const SITE_PRODUCTS = [
   {
     id: 'myo-strawberry', line: 'Myo-Peptide™', flavor: 'Strawberry Milkshake',
     img: 'assets/cropped-can-myo-strawberry.png', bg: 'var(--bm-pink-bg)', accent: 'var(--bm-pink-deep)',
-    price: 47.99, priceSub: 40.79,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: "World's first RTD peptide shake.",
     blurb: "Clinically proven plant-based peptides. 20g protein. Zero compromises. The strawberry milkshake you remember — engineered for the body you're building.",
     stats: [
@@ -82,7 +82,7 @@ const SITE_PRODUCTS = [
   {
     id: 'myo-vanilla', line: 'Myo-Peptide™', flavor: 'Vanilla Marshmallow Milk',
     img: 'assets/cropped-can-myo-vanilla.png', bg: 'var(--bm-blue-sky)', accent: 'var(--bm-blue-deep)',
-    price: 47.99, priceSub: 40.79,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: 'The childhood treat. The adult formula.',
     blurb: 'Soft vanilla, toasted marshmallow. 20g of clean protein and 2.4g of PeptiStrong® in every can. Built for the people who never stopped believing.',
     stats: [
@@ -98,7 +98,7 @@ const SITE_PRODUCTS = [
   {
     id: 'myo-chai', line: 'Myo-Peptide™', flavor: 'Chai Latte',
     img: 'assets/cropped-can-myo-chai.png', bg: '#EBE5D7', accent: 'var(--bm-royal-deep)',
-    price: 47.99, priceSub: 40.79,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: 'Peptide tea. Spice and steel.',
     blurb: 'Black tea, cardamom, cinnamon, ginger — and 2.4g of clinically dosed peptides. The most civilized way to put on muscle.',
     stats: [
@@ -115,7 +115,7 @@ const SITE_PRODUCTS = [
   {
     id: 'en-apex', line: 'Energy', flavor: 'Apex Punch',
     img: 'assets/cropped-can-energy-apex.png', bg: 'var(--bm-royal-deep)', accent: '#fff', dark: true,
-    price: 35.99, priceSub: 30.59,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: 'Sharp, smooth, and precisely overclocked.',
     blurb: 'Tropical punch with bite. Green tea caffeine, Cognizin®, L-theanine, N-Acetyl-L-Tyrosine. Focus that holds for hours, not minutes.',
     stats: [
@@ -132,7 +132,7 @@ const SITE_PRODUCTS = [
   {
     id: 'en-strawberry', line: 'Energy', flavor: 'Candied Strawberry',
     img: 'assets/cropped-can-energy-strawberry.png', bg: 'var(--bm-red)', accent: '#fff', dark: true,
-    price: 35.99, priceSub: 30.59,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: 'Sweet, loud, and honest.',
     blurb: "Strawberry that doesn't apologize. Same clinical Energy stack: green tea caffeine, Cognizin®, L-theanine. Your boss-level afternoon, in a 12-oz can.",
     stats: [
@@ -149,7 +149,7 @@ const SITE_PRODUCTS = [
   {
     id: 'en-lemonade', line: 'Energy', flavor: 'Frosted Lemonade',
     img: 'assets/cropped-can-energy-lemonade.png', bg: 'var(--bm-sun-soft)', accent: 'var(--bm-ink)',
-    price: 35.99, priceSub: 30.59,
+    price: 'COMING SOON', priceSub: 'COMING SOON',
     tagline: 'Cold, sharp, electric.',
     blurb: "Tart lemon, soft cream finish. Same Energy stack — built for hot days, long shifts, and the kind of work that doesn't end at five.",
     stats: [
