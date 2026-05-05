@@ -529,3 +529,10 @@ p  { margin: 0 0 var(--s-4) 0; text-wrap: pretty; }
   }
 }
 
+/* Hide finale cans on mobile */
+@media (max-width: 600px) {
+  .bm-finale-left-can,
+  .bm-finale-right-can {
+    display: none !important;
+  }
+}
