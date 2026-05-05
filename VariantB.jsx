@@ -111,6 +111,8 @@ function GoodbyePanel({ line }) {
 
 function SplitUniverseFinale() {
   const [ref, shown] = useReveal({ threshold: 0.3 });
+  const isMobile = window.innerWidth <= 600;
+
   return (
     <section ref={ref} style={{ position: 'relative', height: '100vh', minHeight: 720, overflow: 'hidden', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
       {/* Pink half */}
@@ -130,13 +132,17 @@ function SplitUniverseFinale() {
         </div>
       </div>
 
-      {/* Cans — hidden on mobile via CSS class */}
-      <div className="bm-finale-can" style={{ position: 'absolute', left: '3%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-        <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
-      </div>
-      <div className="bm-finale-can" style={{ position: 'absolute', right: '-14%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-        <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
-      </div>
+      {/* Cans — hidden on mobile */}
+      {!isMobile && (
+        <div style={{ position: 'absolute', left: '3%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
+        </div>
+      )}
+      {!isMobile && (
+        <div style={{ position: 'absolute', right: '-14%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
+        </div>
+      )}
 
       {/* Tagline + CTA */}
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: '4%', textAlign: 'center', zIndex: 6, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 700ms 1400ms, transform 700ms 1400ms' }}>
