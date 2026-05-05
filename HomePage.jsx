@@ -155,10 +155,10 @@ function HomeProductGrid() {
     <section style={{ background: 'var(--bm-ink)', color: 'var(--bm-paper)' }} className="bm-section-pad">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 20 }}>
         <div>
-          <div className="bm-eyebrow" style={{ color: 'var(--bm-pink)' }}>Shop · 6 SKUs</div>
+          <div className="bm-eyebrow" style={{ color: 'var(--bm-pink)' }}>Pre-launch · 6 SKUs</div>
           <h2>Pick your<br />weapon.</h2>
         </div>
-        <Link to="/shop" style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--bm-pink)', textDecoration: 'none' }}>Shop all →</Link>
+        <Link to="/shop" style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--bm-pink)', textDecoration: 'none' }}>See all →</Link>
       </div>
       <div className="bm-grid-3">
         {SITE_PRODUCTS.map(p => (
@@ -179,8 +179,8 @@ function HomeProductGrid() {
             <div>
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(18px, 2vw, 24px)', lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-0.01em', color: p.accent }}>{p.flavor}</div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14, color: p.accent, opacity: 0.75 }}>${p.price.toFixed(2)} · 12-pack</span>
-                <span style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.neon ? '#39FF14' : p.accent }}>Shop →</span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: p.accent, opacity: 0.85, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Coming Soon</span>
+                <span style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: p.neon ? '#39FF14' : p.accent }}>Learn more →</span>
               </div>
             </div>
           </Link>
