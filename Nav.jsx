@@ -86,8 +86,11 @@ function Nav() {
               closeMenu();
               setTimeout(() => {
                 const el = document.querySelector('#bm-waitlist-anchor');
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                else window.location.hash = '#/';
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                }
               }, 50);
             }} style={{ width: '100%' }}>Get notified →</Button>
           </div>
