@@ -304,15 +304,15 @@ function SplitUniverseFinale() {
             fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 14,
             letterSpacing: '0.16em', textTransform: 'uppercase',
             textDecoration: 'none',
-          }}>Shop the lineup</a>
-          <a href="#/science" style={{
+          }}>Get notified</a>
+          <a href="#/" onClick={(e) => { setTimeout(() => { const el = document.querySelector('#bm-waitlist-anchor'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100); }} style={{
             display: 'inline-block',
-            background: '#F4EFE4', color: '#0A0A0A',
+            background: '#0A0A0A', color: '#F4EFE4',
             padding: '16px 28px',
             fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 14,
             letterSpacing: '0.16em', textTransform: 'uppercase',
             textDecoration: 'none',
-          }}>The science →</a>
+          }}>Get notified →</a>
         </div>
       </div>
     </section>
