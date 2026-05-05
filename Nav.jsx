@@ -1,21 +1,10 @@
 function Nav() {
-  const cart = useCart();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const linkStyle = {
     fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 12,
     letterSpacing: '0.16em', textTransform: 'uppercase',
     color: 'var(--bm-ink)', textDecoration: 'none', cursor: 'pointer',
   };
-
-  // Pulse the cart badge briefly when an item is added
-  const [pulsing, setPulsing] = React.useState(false);
-  React.useEffect(() => {
-    if (cart.pulse > 0) {
-      setPulsing(true);
-      const t = setTimeout(() => setPulsing(false), 600);
-      return () => clearTimeout(t);
-    }
-  }, [cart.pulse]);
 
   // Close menu on nav
   const closeMenu = () => setMenuOpen(false);
@@ -43,23 +32,13 @@ function Nav() {
         </div>
       </div>
       <div className="bm-nav-right" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-        <a className="bm-nav-account" style={{ ...linkStyle, opacity: 0.55 }}>Account</a>
-        <button
-          onClick={() => cart.setOpen(true)}
-          style={{
-            position: 'relative',
-            background: 'transparent', border: '2px solid var(--bm-ink)',
-            borderRadius: 4, height: 40, padding: '0 16px',
-            fontFamily: 'var(--font-mono)', fontSize: 13, letterSpacing: '0.04em',
-            color: 'var(--bm-ink)', cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            transform: pulsing ? 'scale(1.08)' : 'scale(1)',
-            transition: 'transform 200ms var(--ease-out)',
-          }}
-        >
-          CART · {cart.count}
-        </button>
-        <div className="bm-nav-shop"><Button variant="primary" onClick={() => { window.location.hash = '#/shop'; }}>Shop →</Button></div>
+        <div className="bm-nav-shop">
+          <Button variant="primary" onClick={() => {
+            const el = document.querySelector('#bm-waitlist-anchor');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            else window.location.hash = '#/';
+          }}>Get notified →</Button>
+        </div>
 
         {/* Hamburger — visible only on mobile via CSS */}
         <button
@@ -67,7 +46,7 @@ function Nav() {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
           style={{
-            display: 'none', // overridden by CSS at narrow widths
+            display: 'none',
             background: 'transparent', border: '2px solid var(--bm-ink)',
             borderRadius: 4, width: 40, height: 40,
             padding: 0, cursor: 'pointer',
@@ -103,7 +82,14 @@ function Nav() {
           <Link to="/science" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Science</Link>
           <Link to="/about" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Story</Link>
           <div style={{ marginTop: 20 }}>
-            <Button variant="primary" onClick={() => { window.location.hash = '#/shop'; closeMenu(); }} style={{ width: '100%' }}>Shop →</Button>
+            <Button variant="primary" onClick={() => {
+              closeMenu();
+              setTimeout(() => {
+                const el = document.querySelector('#bm-waitlist-anchor');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                else window.location.hash = '#/';
+              }, 50);
+            }} style={{ width: '100%' }}>Get notified →</Button>
           </div>
         </div>
       )}
