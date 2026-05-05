@@ -1,0 +1,320 @@
+/* =========================================================
+   BOSS MODE — Colors & Type
+   Performance-luxury. Geometric. Disciplined. Loud.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* Brand display face — Orbitron (variable) — supplied by client.
+   Used for the BOSS MODE wordmark + all display headings. */
+@font-face {
+  font-family: 'Orbitron';
+  src: url('fonts/Orbitron-VariableFont_wght.ttf') format('truetype-variations'),
+       url('fonts/Orbitron-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Brand text face — Barlow Condensed — supplied by client.
+   Used for body, eyebrows, button labels, capsules. */
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('fonts/BarlowCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ──────────────────────────────────────────────────────────
+   1.  CORE PALETTE — Brand
+   ────────────────────────────────────────────────────────── */
+:root {
+  /* INK — Boss Mode Black. The default for type, the floor for chrome. */
+  --bm-ink:            #0A0A0A;
+  --bm-ink-2:          #1A1A1A;
+  --bm-ink-3:          #2A2A2A;
+
+  /* PAPER — Off-white, slightly warm. Used on Myo Peptide clean treatments. */
+  --bm-paper:          #F4EFE4;
+  --bm-paper-2:        #EBE5D7;
+
+  /* SIGNAL PINK — The Myo-Peptide accent. Loud, declarative. */
+  --bm-pink:           #EE3D8B;
+  --bm-pink-deep:      #C61E6A;
+  --bm-pink-soft:      #F8C5DC;
+  --bm-pink-bg:        #FBE4EE;
+
+  /* ELECTRIC BLUE — The Energy accent stripe + outline glow. */
+  --bm-blue:           #2BB6E8;
+  --bm-blue-deep:      #1880C2;
+  --bm-blue-sky:       #B6E0F2;
+
+  /* ROYAL — The Energy/Apex Punch can field. Performance, depth. */
+  --bm-royal:          #2B2A82;
+  --bm-royal-deep:     #1B1A5E;
+  --bm-royal-2:        #3F3D9B;
+
+  /* PLUM — Apex Punch facet shadows. */
+  --bm-plum:           #6B2A82;
+  --bm-plum-deep:      #3D1A4E;
+
+  /* CANDIED RED — Strawberry Energy can. */
+  --bm-red:            #C8102E;
+  --bm-red-deep:       #8E0E22;
+
+  /* SUN — Frosted Lemonade can. */
+  --bm-sun:            #F5C72E;
+  --bm-sun-soft:       #FBE89A;
+
+  /* GRADE — Neutrals scale (warm grey, biased toward paper). */
+  --bm-grade-50:       #F8F5EE;
+  --bm-grade-100:      #ECE7DC;
+  --bm-grade-200:      #D6D0C2;
+  --bm-grade-300:      #B0A99A;
+  --bm-grade-400:      #837D70;
+  --bm-grade-500:      #5A554B;
+  --bm-grade-600:      #3D3A33;
+  --bm-grade-700:      #2A2823;
+  --bm-grade-800:      #1A1916;
+  --bm-grade-900:      #0E0D0B;
+
+  /* SEMANTIC */
+  --bm-success:        #2EA86F;
+  --bm-warn:           #F0A53E;
+  --bm-error:          #E53935;
+}
+
+/* ──────────────────────────────────────────────────────────
+   2.  SEMANTIC SURFACES & FOREGROUNDS
+   ────────────────────────────────────────────────────────── */
+:root {
+  /* Default: dark on paper (Myo / general brand pages) */
+  --bg:              var(--bm-paper);
+  --bg-elev:         #FFFFFF;
+  --bg-sunken:       var(--bm-paper-2);
+  --fg:              var(--bm-ink);
+  --fg-2:            var(--bm-grade-600);
+  --fg-3:            var(--bm-grade-400);
+  --fg-inverse:      var(--bm-paper);
+
+  --line:            rgba(10, 10, 10, 0.12);
+  --line-strong:     rgba(10, 10, 10, 0.28);
+  --line-faint:      rgba(10, 10, 10, 0.06);
+
+  /* Brand accents (semantic, swap per product context) */
+  --accent:          var(--bm-pink);          /* Myo-Peptide default */
+  --accent-on:       #FFFFFF;
+  --accent-deep:     var(--bm-pink-deep);
+
+  /* Focus ring — pink with electric-blue inner halo */
+  --focus-ring:      0 0 0 2px var(--bm-paper), 0 0 0 4px var(--bm-pink);
+
+  /* Shadows — flat brand: hard offset, no blur (athletic poster vibe).
+     Plus a subtle ambient for elevated cards. */
+  --shadow-hard-sm:  3px 3px 0 0 var(--bm-ink);
+  --shadow-hard-md:  6px 6px 0 0 var(--bm-ink);
+  --shadow-hard-lg:  10px 10px 0 0 var(--bm-ink);
+  --shadow-ambient:  0 1px 2px rgba(10,10,10,.06), 0 8px 24px rgba(10,10,10,.08);
+  --shadow-inset:    inset 0 0 0 1px rgba(10,10,10,.08);
+
+  /* Radii — disciplined. Boss Mode favors hard edges. */
+  --r-0:             0px;
+  --r-1:             2px;
+  --r-2:             4px;
+  --r-3:             8px;     /* default for cards */
+  --r-pill:          999px;   /* used for flavor capsules */
+
+  /* Spacing scale — 4px base, generous outer gutters */
+  --s-0:  0;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* Motion — minimal, athletic */
+  --ease-out:        cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:        120ms;
+  --dur-base:        200ms;
+  --dur-slow:        420ms;
+}
+
+/* Energy product context — invert to dark royal/black */
+[data-product="energy"], .ctx-energy {
+  --bg:              var(--bm-royal-deep);
+  --bg-elev:         var(--bm-royal);
+  --bg-sunken:       #100F40;
+  --fg:              #FFFFFF;
+  --fg-2:            rgba(255,255,255,0.78);
+  --fg-3:            rgba(255,255,255,0.55);
+  --fg-inverse:      var(--bm-ink);
+  --line:            rgba(255,255,255,0.15);
+  --line-strong:     rgba(255,255,255,0.35);
+  --accent:          var(--bm-blue);
+  --accent-deep:     var(--bm-blue-deep);
+  --accent-on:       var(--bm-ink);
+  --shadow-hard-sm:  3px 3px 0 0 var(--bm-blue);
+  --shadow-hard-md:  6px 6px 0 0 var(--bm-blue);
+}
+
+/* Pure black "performance" context (slide-19 vibe) */
+[data-product="black"], .ctx-black {
+  --bg:              #000000;
+  --bg-elev:         #0E0E0E;
+  --bg-sunken:       #050505;
+  --fg:              var(--bm-paper);
+  --fg-2:            rgba(244,239,228,0.72);
+  --fg-3:            rgba(244,239,228,0.45);
+  --fg-inverse:      var(--bm-ink);
+  --line:            rgba(255,255,255,0.12);
+  --line-strong:     rgba(255,255,255,0.35);
+  --accent:          var(--bm-pink);
+  --accent-on:       #FFFFFF;
+}
+
+/* ──────────────────────────────────────────────────────────
+   3.  TYPE — Families
+   ────────────────────────────────────────────────────────── */
+:root {
+  /* DISPLAY — Orbitron (variable, 400–900): the brand wordmark face.
+     Geometric, square-cornered, technical. Used for BOSS MODE + all display headings. */
+  --font-display:    "Orbitron", "Big Shoulders Display", "Impact", sans-serif;
+
+  /* INLINE — outlined "stroke" treatment used on the Apex Punch can wordmark.
+     Implemented via -webkit-text-stroke on the brand display face. */
+  --font-display-inline: "Orbitron", sans-serif;
+
+  /* TEXT — Barlow Condensed: tall, condensed, athletic. Brand-supplied.
+     Note: only Regular 400 was supplied; weights 500/700 fall back to synthetic
+     bold via font-synthesis. Request additional weights if needed. */
+  --font-text:       "Barlow Condensed", "Helvetica Neue Condensed", "Archivo Narrow", system-ui, sans-serif;
+
+  /* MONO — JetBrains Mono for stat readouts, ingredient panels, code. */
+  --font-mono:       "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+
+  /* TYPE SCALE — bold, performative. Display sizes go BIG. */
+  --t-display-xl: clamp(72px, 12vw, 200px);   /* hero wordmarks */
+  --t-display-l:  clamp(56px, 8vw, 128px);    /* section opener */
+  --t-display-m:  clamp(40px, 5vw, 80px);     /* slide titles */
+  --t-display-s:  clamp(32px, 4vw, 56px);     /* card titles */
+
+  --t-h1:         40px;
+  --t-h2:         28px;
+  --t-h3:         20px;
+  --t-h4:         16px;
+
+  --t-body-l:     18px;
+  --t-body:       16px;
+  --t-body-s:     14px;
+  --t-caption:    12px;
+  --t-eyebrow:    11px;     /* ALL-CAPS section labels */
+
+  --lh-tight:     0.9;
+  --lh-snug:      1.05;
+  --lh-normal:    1.4;
+  --lh-loose:     1.6;
+
+  --lt-tight:     -0.02em;
+  --lt-normal:    0;
+  --lt-wide:      0.04em;
+  --lt-eyebrow:   0.16em;   /* the signature ALL-CAPS letter-spacing */
+}
+
+/* ──────────────────────────────────────────────────────────
+   4.  ELEMENT DEFAULTS
+   ────────────────────────────────────────────────────────── */
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--lt-tight);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h1 { font-size: var(--t-h1); }
+h2 { font-size: var(--t-h2); }
+h3 { font-size: var(--t-h3); font-weight: 700; }
+h4 { font-size: var(--t-h4); font-weight: 700; letter-spacing: var(--lt-normal); text-transform: none; }
+
+p  { margin: 0 0 var(--s-4) 0; text-wrap: pretty; }
+
+/* Display-class utility classes */
+.display-xl { font-family: var(--font-display); font-weight: 900; font-size: var(--t-display-xl); line-height: var(--lh-tight); letter-spacing: -0.03em; text-transform: uppercase; }
+.display-l  { font-family: var(--font-display); font-weight: 900; font-size: var(--t-display-l);  line-height: var(--lh-tight); letter-spacing: -0.02em; text-transform: uppercase; }
+.display-m  { font-family: var(--font-display); font-weight: 800; font-size: var(--t-display-m);  line-height: var(--lh-snug);  letter-spacing: -0.01em; text-transform: uppercase; }
+.display-s  { font-family: var(--font-display); font-weight: 800; font-size: var(--t-display-s);  line-height: var(--lh-snug);  text-transform: uppercase; }
+
+.display-inline {
+  font-family: var(--font-display-inline);
+  font-weight: 800;
+  -webkit-text-stroke: 1px currentColor;
+}
+
+/* Eyebrow — the signature ALL-CAPS section label */
+.eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--t-eyebrow);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--lt-eyebrow);
+  color: var(--fg-2);
+}
+
+/* Numeric / stat readout */
+.mono, code, kbd {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  letter-spacing: 0;
+}
+
+.stat {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--t-display-m);
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Numbered pillar — used in marketing copy ("01 / Clean Energy") */
+.pillar-num {
+  font-family: var(--font-mono);
+  font-size: var(--t-body-s);
+  letter-spacing: var(--lt-wide);
+  color: var(--fg-3);
+}
+
+/* Slash divider — performance-coded copy treatment */
+.slash {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  margin: 0 0.4em;
+}
+
+/* Selection */
+::selection { background: var(--bm-pink); color: #fff; }
+[data-product="energy"] ::selection { background: var(--bm-blue); color: var(--bm-ink); }
+
+/* Focus ring */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-1);
+}
