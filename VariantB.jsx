@@ -134,10 +134,14 @@ function SplitUniverseFinale() {
         </div>
       )}
 
-      {/* Wordmark */}
+      {/* Wordmark — ™ absolutely positioned so MODE stays centered */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 5, pointerEvents: 'none', opacity: shown ? 1 : 0, transform: shown ? 'scale(1)' : 'scale(1.1)', transition: 'opacity 600ms 700ms, transform 700ms 700ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(80px, 16vw, 240px)', lineHeight: 0.85, letterSpacing: '-0.04em', color: '#0A0A0A', textAlign: 'center' }}>
-          BOSS<br/>MODE<sup style={{ fontSize: '0.32em', verticalAlign: 'top', marginLeft: '0.06em', fontWeight: 700, letterSpacing: 0 }}>™</sup>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(80px, 16vw, 240px)', lineHeight: 0.85, letterSpacing: '-0.04em', color: '#0A0A0A', textAlign: 'center', position: 'relative' }}>
+          BOSS<br/>
+          <span style={{ position: 'relative', display: 'inline-block' }}>
+            MODE
+            <sup style={{ fontSize: '0.32em', fontWeight: 700, letterSpacing: 0, position: 'absolute', top: '0.1em', right: '-0.5em' }}>™</sup>
+          </span>
         </div>
       </div>
 
