@@ -121,9 +121,18 @@ function SplitUniverseFinale() {
       <div style={{ position: 'absolute', inset: 0, clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)', background: 'linear-gradient(225deg, #1B1A5E 0%, #2B2A82 50%, #2BB6E8 100%)', transform: shown ? 'translateX(0)' : 'translateX(100%)', transition: 'transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1)', zIndex: 1 }} />
       {/* Seam */}
       <div style={{ position: 'absolute', top: '8%', bottom: '8%', left: '50%', width: 2, marginLeft: -1, background: '#0A0A0A', opacity: shown ? 0.5 : 0, transition: 'opacity 600ms 600ms', zIndex: 4 }} />
-      {/* Labels */}
-      <div style={{ position: 'absolute', top: 32, left: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0A0A0A', opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5 }}>Myo · Recovery · Pink</div>
-      <div style={{ position: 'absolute', top: 32, right: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#F4EFE4', opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5, textAlign: 'right' }}>Energy · Focus · Blue</div>
+
+      {/* Side labels — hidden on mobile */}
+      {!isMobile && (
+        <div style={{ position: 'absolute', top: 32, left: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0A0A0A', opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5 }}>
+          Myo · Recovery · Pink
+        </div>
+      )}
+      {!isMobile && (
+        <div style={{ position: 'absolute', top: 32, right: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#F4EFE4', opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5, textAlign: 'right' }}>
+          Energy · Focus · Blue
+        </div>
+      )}
 
       {/* Wordmark */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 5, pointerEvents: 'none', opacity: shown ? 1 : 0, transform: shown ? 'scale(1)' : 'scale(1.1)', transition: 'opacity 600ms 700ms, transform 700ms 700ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
