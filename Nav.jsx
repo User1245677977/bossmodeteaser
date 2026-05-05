@@ -30,30 +30,26 @@ function Nav() {
           <Link to="/about" style={linkStyle}>Story</Link>
         </div>
       </div>
-      <div className="bm-nav-right" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-        <div className="bm-nav-shop">
-          <Button variant="primary" onClick={() => { window.location.hash = '#/science'; }}>The science →</Button>
-        </div>
 
-        <button
-          className="bm-nav-burger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-          style={{
-            display: 'none',
-            background: 'transparent', border: '2px solid var(--bm-ink)',
-            borderRadius: 4, width: 40, height: 40,
-            padding: 0, cursor: 'pointer',
-            alignItems: 'center', justifyContent: 'center',
-          }}
-        >
-          <div style={{ width: 18, display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <div style={{ height: 2, background: 'var(--bm-ink)', transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none', transition: 'transform 180ms' }} />
-            <div style={{ height: 2, background: 'var(--bm-ink)', opacity: menuOpen ? 0 : 1, transition: 'opacity 120ms' }} />
-            <div style={{ height: 2, background: 'var(--bm-ink)', transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none', transition: 'transform 180ms' }} />
-          </div>
-        </button>
-      </div>
+      {/* Hamburger — mobile only */}
+      <button
+        className="bm-nav-burger"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Menu"
+        style={{
+          display: 'none',
+          background: 'transparent', border: '2px solid var(--bm-ink)',
+          borderRadius: 4, width: 40, height: 40,
+          padding: 0, cursor: 'pointer',
+          alignItems: 'center', justifyContent: 'center',
+        }}
+      >
+        <div style={{ width: 18, display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <div style={{ height: 2, background: 'var(--bm-ink)', transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'none', transition: 'transform 180ms' }} />
+          <div style={{ height: 2, background: 'var(--bm-ink)', opacity: menuOpen ? 0 : 1, transition: 'opacity 120ms' }} />
+          <div style={{ height: 2, background: 'var(--bm-ink)', transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'none', transition: 'transform 180ms' }} />
+        </div>
+      </button>
 
       {menuOpen && (
         <div
@@ -74,9 +70,6 @@ function Nav() {
           <Link to="/shop?line=energy" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Energy</Link>
           <Link to="/science" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Science</Link>
           <Link to="/about" style={{ ...linkStyle, padding: '14px 4px', borderBottom: '1px solid var(--line)', fontSize: 14 }}>Story</Link>
-          <div style={{ marginTop: 20 }}>
-            <Button variant="primary" onClick={() => { closeMenu(); window.location.hash = '#/science'; }} style={{ width: '100%' }}>The science →</Button>
-          </div>
         </div>
       )}
     </nav>
