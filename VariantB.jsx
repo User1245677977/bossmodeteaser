@@ -15,7 +15,6 @@ function VariantB_StatBarrage({ embedded = false }) {
     { num: '0',    sub: 'sugar · jitters · compromises',     color: '#F4EFE4', tint: 'paper' },
   ];
 
-  // The scrollable container (the page itself when not embedded; the variant frame when embedded)
   return (
     <div style={{
       position: 'relative',
@@ -51,7 +50,6 @@ function VariantB_StatBarrage({ embedded = false }) {
         </div>
       ))}
 
-      {/* Lift the first panel up so the readout doesn't push it down */}
       <div style={{ marginTop: -64 }} />
 
       {/* PANELS */}
@@ -84,7 +82,6 @@ function StatPanel({ stat, index }) {
       scrollSnapAlign: 'start',
       scrollSnapStop: 'always',
     }}>
-      {/* Faint scanlines */}
       <div style={{
         position: 'absolute', inset: 0,
         backgroundImage: 'repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)',
@@ -99,8 +96,7 @@ function StatPanel({ stat, index }) {
         <div style={{
           fontFamily: 'var(--font-mono)', fontSize: 13,
           letterSpacing: '0.28em', textTransform: 'uppercase',
-          color: stat.color,
-          marginBottom: 24,
+          color: stat.color, marginBottom: 24,
         }}>
           · stat {String(index + 1).padStart(2, '0')} ·
         </div>
@@ -116,12 +112,10 @@ function StatPanel({ stat, index }) {
         <div style={{
           fontFamily: 'var(--font-mono)', fontSize: 14,
           letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'rgba(244,239,228,0.85)',
-          marginTop: 16,
+          color: 'rgba(244,239,228,0.85)', marginTop: 16,
         }}>{stat.sub}</div>
       </div>
 
-      {/* Page index — bottom right */}
       <div style={{
         position: 'absolute', bottom: 32, right: 32,
         fontFamily: 'var(--font-mono)', fontSize: 11,
@@ -130,7 +124,6 @@ function StatPanel({ stat, index }) {
         {String(index + 1).padStart(2, '0')} / 06
       </div>
 
-      {/* Scroll hint on first panel */}
       {index === 0 && (
         <div style={{
           position: 'absolute', bottom: 40, left: '50%',
@@ -207,44 +200,33 @@ function SplitUniverseFinale() {
       {/* Vertical seam */}
       <div style={{
         position: 'absolute', top: '8%', bottom: '8%', left: '50%',
-        width: 2, marginLeft: -1,
-        background: '#0A0A0A',
-        opacity: shown ? 0.5 : 0,
-        transition: 'opacity 600ms 600ms',
-        zIndex: 4,
+        width: 2, marginLeft: -1, background: '#0A0A0A',
+        opacity: shown ? 0.5 : 0, transition: 'opacity 600ms 600ms', zIndex: 4,
       }} />
       {/* Side labels */}
       <div style={{
         position: 'absolute', top: 32, left: 32,
         fontFamily: 'var(--font-mono)', fontSize: 11,
-        letterSpacing: '0.24em', textTransform: 'uppercase',
-        color: '#0A0A0A',
-        opacity: shown ? 0.85 : 0,
-        transition: 'opacity 500ms 800ms',
-        zIndex: 5,
+        letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0A0A0A',
+        opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5,
       }}>
         Myo · Recovery · Pink
       </div>
       <div style={{
         position: 'absolute', top: 32, right: 32,
         fontFamily: 'var(--font-mono)', fontSize: 11,
-        letterSpacing: '0.24em', textTransform: 'uppercase',
-        color: '#F4EFE4',
-        opacity: shown ? 0.85 : 0,
-        transition: 'opacity 500ms 800ms',
-        zIndex: 5,
-        textAlign: 'right',
+        letterSpacing: '0.24em', textTransform: 'uppercase', color: '#F4EFE4',
+        opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5, textAlign: 'right',
       }}>
         Energy · Focus · Blue
       </div>
 
-      {/* WORDMARK split — ALL BLACK */}
+      {/* WORDMARK */}
       <div style={{
         position: 'absolute', inset: 0,
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        zIndex: 5,
-        pointerEvents: 'none',
+        zIndex: 5, pointerEvents: 'none',
         opacity: shown ? 1 : 0,
         transform: shown ? 'scale(1)' : 'scale(1.1)',
         transition: 'opacity 600ms 700ms, transform 700ms 700ms cubic-bezier(0.22, 0.61, 0.36, 1)',
@@ -260,23 +242,21 @@ function SplitUniverseFinale() {
 
       {/* Two cans */}
       <div style={{
-        position: 'absolute', left: '3%', bottom: '14%',
-        zIndex: 3,
+        position: 'absolute', left: '3%', bottom: '14%', zIndex: 3,
         opacity: shown ? 1 : 0,
         transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)',
         transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)',
       }}>
-        <img src="../assets/cropped-can-myo-strawberry.png" alt=""
+        <img src="assets/cropped-can-myo-strawberry.png" alt=""
           style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
       </div>
       <div style={{
-        position: 'absolute', right: '-14%', bottom: '14%',
-        zIndex: 3,
+        position: 'absolute', right: '-14%', bottom: '14%', zIndex: 3,
         opacity: shown ? 1 : 0,
         transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)',
         transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)',
       }}>
-        <img src="../assets/cropped-can-energy-apex.png" alt=""
+        <img src="assets/cropped-can-energy-apex.png" alt=""
           style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
       </div>
 
@@ -297,14 +277,6 @@ function SplitUniverseFinale() {
           Sip. Dominate. Repeat.<sup style={{ fontSize: '0.4em', verticalAlign: 'top', marginLeft: '0.1em', fontWeight: 700 }}>™</sup>
         </h1>
         <div style={{ marginTop: 24, display: 'inline-flex', gap: 16 }}>
-          <a href="#/shop" style={{
-            display: 'inline-block',
-            background: '#0A0A0A', color: '#F4EFE4',
-            padding: '16px 28px',
-            fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 14,
-            letterSpacing: '0.16em', textTransform: 'uppercase',
-            textDecoration: 'none',
-          }}>Get notified</a>
           <a href="#/" onClick={(e) => { setTimeout(() => { const el = document.querySelector('#bm-waitlist-anchor'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100); }} style={{
             display: 'inline-block',
             background: '#0A0A0A', color: '#F4EFE4',
@@ -313,6 +285,14 @@ function SplitUniverseFinale() {
             letterSpacing: '0.16em', textTransform: 'uppercase',
             textDecoration: 'none',
           }}>Get notified →</a>
+          <a href="#/science" style={{
+            display: 'inline-block',
+            background: '#F4EFE4', color: '#0A0A0A',
+            padding: '16px 28px',
+            fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 14,
+            letterSpacing: '0.16em', textTransform: 'uppercase',
+            textDecoration: 'none',
+          }}>The science →</a>
         </div>
       </div>
     </section>
