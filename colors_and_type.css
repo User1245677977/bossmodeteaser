@@ -470,3 +470,62 @@ p  { margin: 0 0 var(--s-4) 0; text-wrap: pretty; }
   .bm-shop-header { padding: 40px 20px 24px; }
   .bm-breadcrumb { padding: 14px 20px; }
 }
+
+/* ──────────────────────────────────────────────────────────
+6. MOBILE FIXES
+────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+
+  /* Hero form — stack input and button vertically */
+  .bm-hero-form {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .bm-hero-form input {
+    border-radius: 4px !important;
+    border-right: 2px solid rgba(244,239,228,0.4) !important;
+    width: 100% !important;
+  }
+  .bm-hero-form button {
+    border-radius: 4px !important;
+    width: 100% !important;
+  }
+
+  /* Hero cans — scale down so they don't overflow */
+  .bm-hero-cans {
+    height: 280px !important;
+    gap: 8px !important;
+  }
+  .bm-hero-cans img {
+    max-height: 260px !important;
+    max-width: 140px !important;
+  }
+
+  /* Hero inner — tighten padding */
+  .bm-hero-inner {
+    padding: 48px 20px 32px !important;
+    gap: 32px !important;
+  }
+
+  /* Footer form — stack on mobile */
+  footer form {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  footer form input {
+    border-radius: 4px !important;
+    border-right: 2px solid rgba(244,239,228,0.4) !important;
+    width: 100% !important;
+  }
+  footer form button {
+    border-radius: 4px !important;
+    width: 100% !important;
+  }
+
+  /* Prevent horizontal overflow everywhere */
+  * {
+    max-width: 100vw;
+  }
+}
+
