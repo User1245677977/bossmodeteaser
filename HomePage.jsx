@@ -26,6 +26,7 @@ function HomeHero() {
         background: 'linear-gradient(135deg, #7F77DD 0%, #2B2A82 50%, #534AB7 100%)',
         clipPath: 'polygon(0 40%, 100% 0, 100% 100%, 0 100%)',
       }} />
+      
 
       <div className="bm-hero-inner">
         <div>
