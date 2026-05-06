@@ -122,7 +122,7 @@ function SplitUniverseFinale() {
       {/* Seam */}
       <div style={{ position: 'absolute', top: '8%', bottom: '8%', left: '50%', width: 2, marginLeft: -1, background: '#0A0A0A', opacity: shown ? 0.5 : 0, transition: 'opacity 600ms 600ms', zIndex: 4 }} />
 
-      {/* Side labels — hidden on mobile */}
+      {/* Side labels */}
       {!isMobile && (
         <div style={{ position: 'absolute', top: 32, left: 32, fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.24em', textTransform: 'uppercase', color: '#0A0A0A', opacity: shown ? 0.85 : 0, transition: 'opacity 500ms 800ms', zIndex: 5 }}>
           Myo · Recovery · Pink
@@ -134,7 +134,7 @@ function SplitUniverseFinale() {
         </div>
       )}
 
-      {/* Wordmark — centered, ™ absolutely positioned */}
+      {/* Wordmark */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 5, pointerEvents: 'none', opacity: shown ? 1 : 0, transform: shown ? 'scale(1)' : 'scale(1.1)', transition: 'opacity 600ms 700ms, transform 700ms 700ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(80px, 16vw, 240px)', lineHeight: 0.85, letterSpacing: '-0.04em', color: '#0A0A0A', textAlign: 'center', position: 'relative' }}>
           BOSS<br/>
@@ -145,19 +145,19 @@ function SplitUniverseFinale() {
         </div>
       </div>
 
-      {/* Cans — smaller and positioned higher so tagline fits below — hidden on mobile */}
+      {/* Cans — bigger and closer */}
       {!isMobile && (
-        <div style={{ position: 'absolute', left: '2%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(58vh, 520px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
+        <div style={{ position: 'absolute', left: '5%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
         </div>
       )}
       {!isMobile && (
-        <div style={{ position: 'absolute', right: '-8%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(58vh, 520px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
+        <div style={{ position: 'absolute', right: '2%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
         </div>
       )}
 
-      {/* Tagline + CTA — moved up so it sits below cans */}
+      {/* Tagline + CTA */}
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: '5%', textAlign: 'center', zIndex: 6, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 700ms 1400ms, transform 700ms 1400ms' }}>
         <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(28px, 4vw, 64px)', letterSpacing: '-0.02em', textTransform: 'uppercase', margin: 0, color: '#0A0A0A' }}>
           Sip. Dominate. Repeat.<sup style={{ fontSize: '0.4em', verticalAlign: 'top', marginLeft: '0.1em', fontWeight: 700 }}>™</sup>
