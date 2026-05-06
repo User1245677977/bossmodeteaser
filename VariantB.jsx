@@ -134,7 +134,7 @@ function SplitUniverseFinale() {
         </div>
       )}
 
-      {/* Wordmark — ™ absolutely positioned so MODE stays centered */}
+      {/* Wordmark — centered, ™ absolutely positioned */}
       <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 5, pointerEvents: 'none', opacity: shown ? 1 : 0, transform: shown ? 'scale(1)' : 'scale(1.1)', transition: 'opacity 600ms 700ms, transform 700ms 700ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(80px, 16vw, 240px)', lineHeight: 0.85, letterSpacing: '-0.04em', color: '#0A0A0A', textAlign: 'center', position: 'relative' }}>
           BOSS<br/>
@@ -145,25 +145,25 @@ function SplitUniverseFinale() {
         </div>
       </div>
 
-      {/* Cans — hidden on mobile */}
+      {/* Cans — smaller and positioned higher so tagline fits below — hidden on mobile */}
       {!isMobile && (
-        <div style={{ position: 'absolute', left: '3%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
+        <div style={{ position: 'absolute', left: '2%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(58vh, 520px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
         </div>
       )}
       {!isMobile && (
-        <div style={{ position: 'absolute', right: '-14%', bottom: '14%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(88vh, 850px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
+        <div style={{ position: 'absolute', right: '-8%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
+          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(58vh, 520px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
         </div>
       )}
 
-      {/* Tagline + CTA */}
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: '4%', textAlign: 'center', zIndex: 6, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 700ms 1400ms, transform 700ms 1400ms' }}>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(40px, 5.5vw, 84px)', letterSpacing: '-0.02em', textTransform: 'uppercase', margin: 0, color: '#0A0A0A' }}>
+      {/* Tagline + CTA — moved up so it sits below cans */}
+      <div style={{ position: 'absolute', left: 0, right: 0, bottom: '5%', textAlign: 'center', zIndex: 6, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 700ms 1400ms, transform 700ms 1400ms' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(28px, 4vw, 64px)', letterSpacing: '-0.02em', textTransform: 'uppercase', margin: 0, color: '#0A0A0A' }}>
           Sip. Dominate. Repeat.<sup style={{ fontSize: '0.4em', verticalAlign: 'top', marginLeft: '0.1em', fontWeight: 700 }}>™</sup>
         </h1>
-        <div style={{ marginTop: 24 }}>
-          <a href="#/science" style={{ display: 'inline-block', background: '#F4EFE4', color: '#0A0A0A', padding: '16px 28px', fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 14, letterSpacing: '0.16em', textTransform: 'uppercase', textDecoration: 'none' }}>The science →</a>
+        <div style={{ marginTop: 16 }}>
+          <a href="#/science" style={{ display: 'inline-block', background: '#F4EFE4', color: '#0A0A0A', padding: '14px 28px', fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 13, letterSpacing: '0.16em', textTransform: 'uppercase', textDecoration: 'none' }}>The science →</a>
         </div>
       </div>
     </section>
