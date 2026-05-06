@@ -33,7 +33,6 @@ function Footer() {
       { l: 'Contact', to: '/about' },
     ]},
   ];
-
   return (
     <footer style={{ background: 'var(--bm-ink)', color: 'var(--bm-paper)', padding: '80px 48px 36px', position: 'relative', overflow: 'hidden' }}>
 
