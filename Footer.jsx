@@ -9,6 +9,7 @@ function Footer() {
     var _learnq = window._learnq || [];
     _learnq.push(['identify', { '$email': email }]);
     _learnq.push(['track', 'Waitlist Signup', { 'email': email }]);
+    _learnq.push(['subscribe', { '$email': email, 'listId': 'X8zszE' }]);
     
     setSubmitted(true);
   };
