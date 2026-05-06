@@ -5,11 +5,11 @@ function Footer() {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email.includes('@')) return;
-    try {
-      const list = JSON.parse(localStorage.getItem('bm_waitlist') || '[]');
-      list.push({ email, at: Date.now(), source: 'footer' });
-      localStorage.setItem('bm_waitlist', JSON.stringify(list));
-    } catch {}
+    
+    var _learnq = window._learnq || [];
+    _learnq.push(['identify', { '$email': email }]);
+    _learnq.push(['track', 'Waitlist Signup', { 'email': email }]);
+    
     setSubmitted(true);
   };
 
