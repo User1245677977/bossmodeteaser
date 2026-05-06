@@ -53,6 +53,7 @@ function VariantB_StatBarrage({ embedded = false }) {
   );
 }
 
+
 function StatPanel({ stat, index }) {
   const [ref, shown] = useReveal({ threshold: 0.55 });
   return (
