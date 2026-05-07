@@ -35,11 +35,13 @@ function ProductPage({ productId }) {
     'en-lemonade':    { shadow: '#2BB6E8' },
   };
 
+  const isMobile = window.innerWidth <= 600;
+
   return (
     <>
       {/* Breadcrumb */}
       <div style={{
-        padding: '20px 48px', borderBottom: '1.5px solid var(--bm-ink)',
+        padding: '20px 24px', borderBottom: '1.5px solid var(--bm-ink)',
         background: 'var(--bm-paper)', fontFamily: 'var(--font-text)',
         fontWeight: 400, fontSize: 14, letterSpacing: '0.04em', color: 'rgba(10,10,10,0.45)',
       }} className="bm-breadcrumb">
@@ -51,9 +53,13 @@ function ProductPage({ productId }) {
       </div>
 
       {/* Hero */}
-      <section style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', minHeight: 680, background: 'var(--bm-paper)' }} className="bm-pdp-hero">
+      <section style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '1.1fr 1fr',
+        minHeight: 680, background: 'var(--bm-paper)'
+      }} className="bm-pdp-hero">
         {/* Image side */}
-        <div style={{ position: 'relative', overflow: 'hidden', background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 500 }}>
+        <div style={{ position: 'relative', overflow: 'hidden', background: p.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: isMobile ? 320 : 500 }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: isEnergy
@@ -69,15 +75,15 @@ function ProductPage({ productId }) {
         </div>
 
         {/* Info side */}
-        <div style={{ padding: '56px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} className="bm-pdp-info">
+        <div style={{ padding: isMobile ? '32px 20px' : '56px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} className="bm-pdp-info">
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink-deep)', marginBottom: 14 }}>
             {p.line} · 12 fl oz cans · Pre-launch
           </div>
           <h1 style={{
             fontFamily: 'var(--font-display)', fontWeight: 900,
-            fontSize: 'clamp(28px, 3.5vw, 64px)', lineHeight: 0.92,
-            letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 10,
-            wordBreak: 'break-word', overflowWrap: 'break-word',
+            fontSize: isMobile ? 'clamp(32px, 10vw, 48px)' : 'clamp(36px, 4vw, 64px)',
+            lineHeight: 1, letterSpacing: '-0.02em',
+            textTransform: 'uppercase', marginBottom: 10,
           }}>{p.flavor}</h1>
           <div style={{ fontSize: 17, color: 'rgba(10,10,10,0.6)', fontStyle: 'italic', marginBottom: 20 }}>{p.tagline}</div>
 
@@ -176,7 +182,7 @@ function ProductPage({ productId }) {
         <section style={{ background: 'var(--bm-paper)', padding: '80px 48px', borderTop: '1.5px solid var(--bm-ink)' }} className="bm-section-pad">
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--bm-pink-deep)', marginBottom: 12 }}>More from {p.line}</div>
           <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(36px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 32, color: 'var(--bm-ink)' }}>Stack the deck.</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: `repeat(${related.length}, 1fr)`, gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${related.length}, 1fr)`, gap: 20 }}>
             {related.map(r => {
               const cs = cardStyles[r.id] || { shadow: 'var(--bm-ink)' };
               return (
