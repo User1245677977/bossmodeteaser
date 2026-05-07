@@ -81,7 +81,7 @@ function ProductPage({ productId }) {
           </div>
           <h1 style={{
             fontFamily: 'var(--font-display)', fontWeight: 900,
-            fontSize: isMobile ? 'clamp(32px, 10vw, 48px)' : 'clamp(36px, 4vw, 64px)',
+            fontSize: isMobile ? 'clamp(24px, 7vw, 36px)' : 'clamp(36px, 4vw, 64px)',
             lineHeight: 1, letterSpacing: '-0.02em',
             textTransform: 'uppercase', marginBottom: 10,
           }}>{p.flavor}</h1>
