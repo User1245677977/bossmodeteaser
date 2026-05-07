@@ -103,9 +103,9 @@ function FounderCard({ name, role, bio, tone }) {
   return (
     <div style={{ background: '#fff', border: '2px solid var(--bm-ink)', borderRadius: 8, padding: 32, boxShadow: '6px 6px 0 0 var(--bm-ink)', display: 'flex', gap: 20, alignItems: 'flex-start' }}>
       <div style={{ width: 80, height: 80, flexShrink: 0, background: accent, color: '#fff', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 40, letterSpacing: '-0.02em' }}>{name[0]}</div>
-      <div>
+      <div style={{ minWidth: 0, flex: 1 }}>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: accentDeep, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{role}</div>
-        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 36, lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', marginTop: 4, color: 'var(--bm-ink)' }}>{name}</div>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 'clamp(20px, 5vw, 36px)', lineHeight: 1, letterSpacing: '-0.02em', textTransform: 'uppercase', marginTop: 4, color: 'var(--bm-ink)' }}>{name}</div>
         <p style={{ fontSize: 14, lineHeight: 1.55, marginTop: 12, color: 'rgba(10,10,10,0.6)' }}>{bio}</p>
       </div>
     </div>
