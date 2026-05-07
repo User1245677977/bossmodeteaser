@@ -17,11 +17,10 @@ function ProductPage({ productId }) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (!email.includes('@')) return;
-    try {
-      const list = JSON.parse(localStorage.getItem('bm_waitlist') || '[]');
-      list.push({ email, at: Date.now(), source: `pdp:${p.id}` });
-      localStorage.setItem('bm_waitlist', JSON.stringify(list));
-    } catch {}
+    var _learnq = window._learnq || [];
+    _learnq.push(['identify', { '$email': email }]);
+    _learnq.push(['track', 'Waitlist Signup', { 'email': email, 'product': p.flavor }]);
+    _learnq.push(['subscribe', { '$email': email, 'listId': 'X8zszE' }]);
     setSubmitted(true);
   };
 
@@ -76,8 +75,9 @@ function ProductPage({ productId }) {
           </div>
           <h1 style={{
             fontFamily: 'var(--font-display)', fontWeight: 900,
-            fontSize: 'clamp(36px, 4vw, 64px)', lineHeight: 0.92,
+            fontSize: 'clamp(28px, 3.5vw, 64px)', lineHeight: 0.92,
             letterSpacing: '-0.02em', textTransform: 'uppercase', marginBottom: 10,
+            wordBreak: 'break-word', overflowWrap: 'break-word',
           }}>{p.flavor}</h1>
           <div style={{ fontSize: 17, color: 'rgba(10,10,10,0.6)', fontStyle: 'italic', marginBottom: 20 }}>{p.tagline}</div>
 
@@ -93,7 +93,7 @@ function ProductPage({ productId }) {
           <p style={{ fontSize: 16, lineHeight: 1.6, color: 'rgba(10,10,10,0.65)', marginBottom: 24, maxWidth: 500 }}>{p.blurb}</p>
 
           {/* Stats */}
-          <div style={{ display: 'flex', gap: 28, marginBottom: 28 }}>
+          <div style={{ display: 'flex', gap: 28, marginBottom: 28, flexWrap: 'wrap' }}>
             {p.stats.map(s => (
               <div key={s.l}>
                 <div style={{ fontFamily: 'var(--font-display)', fontWeight: 900, fontSize: 44, lineHeight: 0.9, color: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink)', letterSpacing: '-0.02em' }}>{s.v}</div>
@@ -102,7 +102,7 @@ function ProductPage({ productId }) {
             ))}
           </div>
 
-          {/* Waitlist CTA — replaces price/cart */}
+          {/* Waitlist CTA */}
           <div style={{ border: '2px solid var(--bm-ink)', borderRadius: 8, padding: 24, background: '#fff', boxShadow: '6px 6px 0 0 var(--bm-ink)', marginBottom: 16 }}>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', color: isEnergy ? 'var(--bm-blue)' : 'var(--bm-pink)', marginBottom: 8 }}>
               Pre-launch · Coming soon
@@ -118,12 +118,12 @@ function ProductPage({ productId }) {
                 ✓ You're on the list for {p.flavor}.
               </div>
             ) : (
-              <form onSubmit={onSubmit} style={{ display: 'flex', gap: 0 }}>
+              <form onSubmit={onSubmit} style={{ display: 'flex', gap: 0, flexWrap: 'wrap' }}>
                 <input
                   type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   style={{
-                    flex: 1, height: 52, padding: '0 18px',
+                    flex: 1, minWidth: 0, height: 52, padding: '0 18px',
                     background: '#fff', color: 'var(--bm-ink)',
                     border: '2px solid var(--bm-ink)', borderRight: 'none',
                     borderRadius: '4px 0 0 4px',
