@@ -19,7 +19,6 @@ function VariantB_StatBarrage({ embedded = false }) {
       background: '#0A0A0A',
       fontFamily: 'var(--font-display)',
       color: '#F4EFE4',
-      scrollSnapType: reduced ? 'none' : 'y mandatory',
     }}>
       <div style={{
         position: 'sticky', top: 0, padding: '24px 28px',
@@ -60,7 +59,6 @@ function StatPanel({ stat, index }) {
     <section ref={ref} style={{
       position: 'relative', height: '100vh', minHeight: 600,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      scrollSnapAlign: 'start', scrollSnapStop: 'always',
     }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 4px)', pointerEvents: 'none' }} />
       <div style={{
@@ -96,7 +94,7 @@ function StatPanel({ stat, index }) {
 function GoodbyePanel({ line }) {
   const [ref, shown] = useReveal({ threshold: 0.5 });
   return (
-    <section ref={ref} style={{ position: 'relative', height: '100vh', minHeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+    <section ref={ref} style={{ position: 'relative', height: '100vh', minHeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <h2 style={{
         margin: 0, fontFamily: 'var(--font-display)', fontWeight: 900,
         fontSize: 'clamp(56px, 9vw, 150px)', lineHeight: 0.95,
@@ -115,7 +113,7 @@ function SplitUniverseFinale() {
   const isMobile = window.innerWidth <= 600;
 
   return (
-    <section ref={ref} style={{ position: 'relative', height: '100vh', minHeight: 720, overflow: 'hidden', scrollSnapAlign: 'start', scrollSnapStop: 'always' }}>
+    <section ref={ref} style={{ position: 'relative', height: '100vh', minHeight: 720, overflow: 'hidden' }}>
       {/* Pink half */}
       <div style={{ position: 'absolute', inset: 0, clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)', background: 'linear-gradient(135deg, #FBE4EE 0%, #F8C5DC 60%, #EE3D8B 100%)', transform: shown ? 'translateX(0)' : 'translateX(-100%)', transition: 'transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1)', zIndex: 1 }} />
       {/* Blue half */}
