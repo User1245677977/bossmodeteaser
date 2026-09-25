@@ -9,14 +9,29 @@ function useHashRoute() {
     return { path, parts };
   };
   const [route, setRoute] = React.useState(parse);
+
+  // Stop the browser from "remembering" and restoring a previous scroll
+  // position for this page — we handle scroll position ourselves below.
   React.useEffect(() => {
-    const onHash = () => {
-      setRoute(parse());
-      window.scrollTo(0, 0);
-    };
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  React.useEffect(() => {
+    const onHash = () => setRoute(parse());
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+
+  // Reset scroll AFTER the new page's content has actually rendered,
+  // instead of on the raw hashchange event (which fires before React
+  // has swapped in the new page — that race is what let the browser
+  // land somewhere mid-page/at the bottom instead of the top).
+  React.useEffect(() => {
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+  }, [route.path]);
+
   return route;
 }
 
