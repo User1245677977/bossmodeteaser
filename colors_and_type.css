@@ -238,11 +238,16 @@ html, body {
   line-height: var(--lh-normal);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Stop the browser from silently re-adjusting scroll position when
-     off-screen content (images loading in, reveal animations) changes
-     size above/below the viewport — this "scroll anchoring" is what was
-     causing random jumps while scrolling the homepage. */
-  overflow-anchor: none;
+  /* NOTE: we tried turning this off in an earlier fix, on the theory that
+     it was the cause of the random jumps. The video evidence says
+     otherwise — the jump we actually caught happens because images lower
+     on the homepage are still finishing loading and changing size as you
+     scroll past them, which shifts everything below. "Scroll anchoring"
+     (the browser feature below) is the browser's own built-in fix for
+     exactly that — it keeps whatever you're looking at from sliding out
+     from under you when something off-screen resizes. So we're leaving it
+     switched on (the default) instead of turning it off. */
+  overflow-anchor: auto;
   /* This site uses hash links (#/shop, #/product/...) to switch pages
      without a real reload. Every one of those still counts as a new
      entry in the phone's browser history though, so swiping in from
