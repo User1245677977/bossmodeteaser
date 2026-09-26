@@ -238,6 +238,19 @@ html, body {
   line-height: var(--lh-normal);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Stop the browser from silently re-adjusting scroll position when
+     off-screen content (images loading in, reveal animations) changes
+     size above/below the viewport — this "scroll anchoring" is what was
+     causing random jumps while scrolling the homepage. */
+  overflow-anchor: none;
+  /* This site uses hash links (#/shop, #/product/...) to switch pages
+     without a real reload. Every one of those still counts as a new
+     entry in the phone's browser history though, so swiping in from
+     the screen edge (iOS Safari's "go back" gesture) makes Safari play
+     its own native page-transition animation — a blank/dimmed flash —
+     even though nothing actually reloaded. Telling the browser not to
+     treat left/right edge swipes as navigation stops that flash. */
+  overscroll-behavior-x: none;
 }
 
 h1, h2, h3, h4, .display {
