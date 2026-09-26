@@ -72,11 +72,15 @@ function HomeHero() {
           <img
             src="assets/cropped-can-myo-strawberry.png"
             alt="Myo-Peptide Strawberry Milkshake"
+            loading="lazy"
+            decoding="async"
             style={{ maxHeight: 420, maxWidth: 220, width: 'auto', height: 'auto', objectFit: 'contain', transform: 'rotate(-6deg)', filter: 'drop-shadow(8px 10px 0 rgba(10,10,10,0.3))' }}
           />
           <img
             src="assets/cropped-can-energy-apex.png"
             alt="Energy Apex Punch"
+            loading="lazy"
+            decoding="async"
             style={{ maxHeight: 460, maxWidth: 240, width: 'auto', height: 'auto', objectFit: 'contain', transform: 'translateY(20px) rotate(4deg)', filter: 'drop-shadow(8px 10px 0 rgba(57,255,20,0.2))' }}
           />
         </div>
@@ -176,7 +180,7 @@ function HomeProductGrid() {
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', color: p.dark ? 'rgba(255,255,255,0.6)' : 'rgba(10,10,10,0.5)', whiteSpace: 'nowrap' }}>12 FL OZ</span>
             </div>
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0' }}>
-              <img src={p.img} alt={p.flavor} style={{ maxHeight: 280, maxWidth: '80%', width: 'auto', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(6px 8px 0 rgba(10,10,10,0.2))' }} />
+              <img src={p.img} alt={p.flavor} loading="lazy" decoding="async" style={{ maxHeight: 280, maxWidth: '80%', width: 'auto', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(6px 8px 0 rgba(10,10,10,0.2))' }} />
             </div>
             <div>
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(18px, 2vw, 24px)', lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-0.01em', color: p.accent }}>{p.flavor}</div>

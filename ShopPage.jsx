@@ -111,7 +111,7 @@ function ShopPage() {
                   <span style={{ fontFamily: 'var(--font-text)', fontWeight: 700, fontSize: 13, letterSpacing: '0.04em', color: cs.dark ? 'rgba(255,255,255,0.5)' : 'rgba(10,10,10,0.45)' }}>12 FL OZ</span>
                 </div>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '12px 0' }}>
-                  <img src={p.img} alt={p.flavor} style={{ maxHeight: 300, maxWidth: '85%', width: 'auto', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(6px 8px 0 rgba(10,10,10,0.2))' }} />
+                  <img src={p.img} alt={p.flavor} loading="lazy" decoding="async" style={{ maxHeight: 300, maxWidth: '85%', width: 'auto', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(6px 8px 0 rgba(10,10,10,0.2))' }} />
                 </div>
                 <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, lineHeight: 1, textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 6, color: ac.flavor }}>{p.flavor}</div>
                 <div style={{ fontSize: 13, lineHeight: 1.4, marginBottom: 14, color: ac.tagline }}>{p.tagline}</div>

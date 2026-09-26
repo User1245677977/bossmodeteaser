@@ -66,7 +66,7 @@ function ProductPage({ productId }) {
               ? 'repeating-linear-gradient(135deg, rgba(43,42,130,0.12) 0px, rgba(43,42,130,0.12) 1px, transparent 1px, transparent 32px)'
               : 'repeating-linear-gradient(135deg, rgba(238,61,139,0.08) 0px, rgba(238,61,139,0.08) 1px, transparent 1px, transparent 32px)',
           }} />
-          <img src={p.img} alt={p.flavor} style={{
+          <img src={p.img} alt={p.flavor} loading="lazy" decoding="async" style={{
             position: 'relative', zIndex: 1,
             maxHeight: '82%', maxWidth: '70%',
             width: 'auto', height: 'auto', objectFit: 'contain',
@@ -195,7 +195,7 @@ function ProductPage({ productId }) {
                   transition: 'transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out)',
                 }}>
                   <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <img src={r.img} alt={r.flavor} style={{ height: 220, width: 'auto', objectFit: 'contain' }} />
+                    <img src={r.img} alt={r.flavor} loading="lazy" decoding="async" style={{ height: 220, width: 'auto', objectFit: 'contain' }} />
                   </div>
                   <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 18, lineHeight: 1, textTransform: 'uppercase', color: r.accent, letterSpacing: '-0.01em' }}>{r.flavor}</div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.08em', textTransform: 'uppercase', color: r.accent, marginTop: 6 }}>Coming Soon</div>

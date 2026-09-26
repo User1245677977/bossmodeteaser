@@ -147,12 +147,12 @@ function SplitUniverseFinale() {
       {/* Cans — bigger and closer */}
       {!isMobile && (
         <div style={{ position: 'absolute', left: '5%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(-6deg)' : 'translateY(200px) rotate(-6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-myo-strawberry.png" alt="" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
+          <img src="assets/cropped-can-myo-strawberry.png" alt="" loading="lazy" decoding="async" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(8px 14px 0 rgba(10,10,10,0.18))' }} />
         </div>
       )}
       {!isMobile && (
         <div style={{ position: 'absolute', right: '2%', bottom: '22%', zIndex: 3, opacity: shown ? 1 : 0, transform: shown ? 'translateY(0) rotate(6deg)' : 'translateY(200px) rotate(6deg)', transition: 'opacity 800ms 1000ms, transform 900ms 1000ms cubic-bezier(0.22, 0.61, 0.36, 1)' }}>
-          <img src="assets/cropped-can-energy-apex.png" alt="" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
+          <img src="assets/cropped-can-energy-apex.png" alt="" loading="lazy" decoding="async" style={{ height: 'min(72vh, 640px)', filter: 'drop-shadow(0 14px 30px rgba(0,0,0,0.55))' }} />
         </div>
       )}
 
