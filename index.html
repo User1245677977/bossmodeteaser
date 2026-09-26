@@ -53,7 +53,12 @@
 <link rel="stylesheet" href="colors_and_type.css">
 <style>
   html, body { margin: 0; padding: 0; background: var(--bm-paper); }
-  #root { min-height: 100vh; }
+  /* Seal off the site's own layout from anything else that might get added
+     to the page later (like a background tool finishing its setup). This
+     does not touch, delay, or change any script on the page — it only
+     stops outside changes from being able to shift our content and jump
+     the scroll position around. */
+  #root { min-height: 100vh; contain: layout style; }
   .bm-btn:hover { box-shadow: 2px 2px 0 0 var(--bm-ink) !important; transform: translate(2px, 2px); }
   .bm-product-card:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0 0 var(--bm-ink) !important; }
   a { color: inherit; }
